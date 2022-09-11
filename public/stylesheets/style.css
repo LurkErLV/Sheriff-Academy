@@ -1,0 +1,70 @@
+.navbar-item, .button {
+    text-decoration: none;
+}
+
+.navbar-item:hover {
+    border-radius: 10px;
+}
+
+.profile-link {
+    text-decoration: none;
+    color: #333333;
+}
+
+.profile-link:hover {
+    color: #777777;
+}
+
+.btn-circle.btn-lg, .btn-group-lg>.btn-circle.btn {
+    width: 50px;
+    height: 50px;
+    padding: 14px 15px;
+    font-size: 18px;
+    line-height: 23px;
+}
+
+.text-muted {
+    color: #8898aa!important;
+}
+
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    cursor: pointer;
+}
+
+.btn-circle {
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+}
+
+.user-table tbody tr .category-select {
+    max-width: 150px;
+    border-radius: 20px;
+}
+
+/*.card {*/
+/*    position: relative;*/
+/*    min-width: 0;*/
+/*    word-wrap: break-word;*/
+/*    background-color: #fff;*/
+/*    background-clip: border-box;*/
+/*    border: 0 solid transparent;*/
+/*    border-radius: 0;*/
+/*    max-width: 25rem;*/
+/*    margin: 15px;*/
+/*}*/
+
+/*.flex-container {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    flex-wrap: wrap;*/
+/*}*/
+
+/*@media (max-width: 800px) {*/
+/*    .flex-container {*/
+/*        flex-direction: column;*/
+/*    }*/
+/*}*/

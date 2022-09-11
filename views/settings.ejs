@@ -1,0 +1,41 @@
+<%- include('partials/header')  -%>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+            <h2 class="h3 mb-4 page-title">Settings</h2>
+            <div class="my-4">
+                <form action="/profile/settings" method="POST">
+                    <div class="row mt-5 align-items-center">
+                        <div class="col-md-3 text-center mb-5">
+                            <div class="avatar avatar-xl">
+                                <img src="https://cdn.discordapp.com/avatars/<%= user.discordId %>/<%= user.avatar %>" alt="..." class="avatar-img rounded-circle" />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row align-items-center">
+                                <div class="col-md-7">
+                                    <h4 class="mb-1"><%= user.username %>#<%= user.discriminator %></h4>
+                                </div>
+                            </div>
+                                <div class="col">
+                                    <p class="text-muted">Access Level: <b><%= user.level %></b></p>
+                                    <p class="text-muted">Rank: <b><%= user.rank %></b></p>
+                                    <p class="text-muted">Nickname: <b><%= user.nickname %></b></p>
+                                </div>
+                            </div>
+                        </div>
+                    <hr class="my-4" />
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="nickname">Nickname</label>
+                            <input type="text" name="nickname" class="form-control" placeholder="Alexander Fiero" />
+                        </div>
+                    </div>
+                    <hr class="my-4" />
+                    <button type="submit" class="btn btn-primary">Save Change</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer')  -%>
