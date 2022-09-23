@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 const { check, validationResult } = require('express-validator');
 const Logs = require('./models/Logs');
 const compression = require('compression')
+var createError = require('http-errors');
 
 db.then(() => console.log('Connected to MongoDB')).catch(err => console.log(err));
 
@@ -53,4 +54,4 @@ app.get('/', (req, res) => {
     });
 });
 
-app.listen(port, ip,() => console.log(`App listening at http://${ip}:${port}`));
+module.exports = app;

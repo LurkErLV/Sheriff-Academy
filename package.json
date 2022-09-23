@@ -1,7 +1,16 @@
 {
-  "name": "Sheriff Academy",
-  "version": "1.0.0",
+  "name": "sheriff-academy",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
   "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1",
     "body-parser": "^1.20.0",
     "compression": "^1.7.4",
     "ejs": "^3.1.8",
