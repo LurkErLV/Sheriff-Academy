@@ -1,64 +1,119 @@
 <%- include('partials/header')  -%>
-<section style="background-color: #eee;">
-    <div class="container py-5">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="card mb-4">
-                    <div class="card-body text-center">
-                        <img src="https://cdn.discordapp.com/avatars/<%= user.discordId %>/<%= user.avatar %>" alt="avatar"
-                             class="rounded-circle img-fluid" style="width: 150px;">
-                        <h5 class="my-3"><%= user.username %>#<%= user.discriminator %></h5>
-                        <p class="text-muted mb-1">Access Level: <b><%= user.level %></b></p>
-                        <p class="text-muted mb-4">Rank: <b><%= user.rank %></b></p>
+<section class="container">
+    <div class="columns is-multiline">
+        <div class="column is-8 is-offset-2 register">
+            <div class="columns">
+                <div class="column left">
+                    <div id="img">
+                        <figure class="image is-128x128">
+                            <img class="is-rounded" src="https://cdn.discordapp.com/avatars/<%= user.discordId %>/<%= user.avatar %>">
+                        </figure>
+                    </div>
+                    <h1 class="title is-3"><%= user.username %>#<%= user.discriminator %></h1>
+                    <h2 class="subtitle is-4"><%= user.position %></h2>
+                    <div id="accessLevel">
+                        <h2 class="subtitle is-5"><b>Access Level:</b> <%= user.level %></h2>
+                    </div>
+                    <div id="rank">
+                        <h2 class="subtitle is-5"><b>Rank:</b> <%= user.rank %></h2>
+                    </div>
+                    <div id="position">
+                        <h2 class="subtitle is-5"><b>Position:</b> <%= user.position %></h2>
                     </div>
                 </div>
-                <div class="card mb-4 mb-lg-0">
-                    <div class="card-body p-0">
-                        <ul class="list-group list-group-flush rounded-3">
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <p class="mb-0"><a class="profile-link" href="https://discord.gg/g7dY8uZ4hf" target="_blank">Discord BCSD</a></p>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <p class="mb-0"><a class="profile-link" href="/profile/settings">Settings</a></p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p class="mb-0">Nickname</p>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0"><%= user.nickname %></p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p class="mb-0">Discord ID</p>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0"><%= user.discordId %></p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p class="mb-0">Phone</p>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0">(097) 234-5678</p>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
+                <div class="column right">
+                    <h2 class="subtitle is-5"><b>Nickname:</b> <%= user.nickname %></h2>
+                    <h2 class="subtitle is-5"><b>Discord ID:</b> <%= user.discordId %></h2>
+                    <h2 class="subtitle is-5"><b>Phone:</b> <%= user.phone %></h2>
+                    <a class="button is-light" href="https://discord.gg/g7dY8uZ4hf" target="_blank">Discord BCSD</a>
+                    <a class="button is-light" href="/profile/settings">Settings</a>
                 </div>
             </div>
         </div>
-    </div>
+        </div>
 </section>
+
+<style>
+    :root {
+        --brandColor: hsl(166, 67%, 51%);
+        --background: rgb(247, 247, 247);
+        --textDark: hsla(0, 0%, 0%, 0.66);
+        --textLight: hsla(0, 0%, 0%, 0.33);
+    }
+
+    body {
+        background: var(--background);
+        height: 100vh;
+        color: var(--textDark);
+    }
+
+    .field:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    .register {
+        margin-top: 10rem;
+        background: white;
+        border-radius: 10px;
+    }
+
+    .left,
+    .right {
+        padding: 4.5rem;
+    }
+
+    .left {
+        border-right: 5px solid var(--background);
+    }
+
+    .left .title {
+        font-weight: 800;
+        letter-spacing: -2px;
+    }
+
+    .left .colored {
+        color: var(--brandColor);
+        font-weight: 500;
+        margin-top: 1rem !important;
+        letter-spacing: -1px;
+    }
+
+    .left p {
+        color: var(--textLight);
+        font-size: 1.15rem;
+    }
+
+    .right .title {
+        font-weight: 800;
+        letter-spacing: -1px;
+    }
+
+    .right .description {
+        margin-top: 1rem;
+        margin-bottom: 1rem !important;
+        color: var(--textLight);
+        font-size: 1.15rem;
+    }
+
+    .right small {
+        color: var(--textLight);
+    }
+
+    input {
+        font-size: 1rem;
+    }
+
+    input:focus {
+        border-color: var(--brandColor) !important;
+        box-shadow: 0 0 0 1px var(--brandColor) !important;
+    }
+
+    .fab,
+    .fas {
+        color: var(--textLight);
+        margin-right: 1rem;
+    }
+
+</style>
+
 <%- include('partials/footer')  -%>

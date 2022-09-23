@@ -7,6 +7,10 @@
         <li>
             <ul>
                 <li><a href="/dashboard/users">Manage users</a></li>
+                <li><a href="/dashboard/positions">Manage positions</a></li>
+                <% if (user.level >= 4) {%>
+                <li><a href="/dashboard/logs">Logs</a></li>
+                <% } %>
             </ul>
         </li>
     </ul>

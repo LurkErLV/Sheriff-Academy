@@ -1,0 +1,17 @@
+.date {
+    font-weight: bold;
+}
+
+.logs {
+    background-color: #f2f3f4;
+    width: 75%;
+    margin: 0 auto;
+}
+
+.log {
+    border-bottom: #333333 solid 2px;
+}
+
+.userid {
+    font-weight: 600;
+}

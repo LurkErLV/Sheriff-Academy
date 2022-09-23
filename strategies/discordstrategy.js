@@ -16,7 +16,7 @@ passport.use(new DiscordStrategy({
     clientID: clientId,
     clientSecret: clientSecret,
     callbackURL: clientRedirect,
-    scope: ['identify', 'guilds']
+    scope: ['identify']
 }, async (accessToken, refreshToken, profile, done) => {
     try {
         const user = await DiscordUser.findOne({ discordId: profile.id });
@@ -29,8 +29,10 @@ passport.use(new DiscordStrategy({
                 nickname: "None",
                 username: profile.username,
                 avatar: profile.avatar,
+                phone: "None",
                 level: 0,
-                rank: "Кадет ПА"
+                rank: "Гость",
+                position: "None"
             });
             const savedUser = await newUser.save();
             done(null, savedUser);

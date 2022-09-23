@@ -1,0 +1,31 @@
+<%- include('partials/header') -%>
+<div class="container box has-background-light">
+    <div class="b-table">
+        <div class="table-wrapper has-mobile-cards">
+            <h1 class="title has-text-centered">Сотрудники отдела SA</h1>
+            <table class="table is-fullwidth is-striped is-hoverable is-fullwidth">
+                <thead>
+                <tr>
+                    <th>Discord ID</th>
+                    <th>Имя Фамилия</th>
+                    <th>Должность</th>
+                    <th>Номер телефона</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% sa.forEach((el) => { %>
+                        <tr>
+                            <td><p><b><%= el.discordId %></b></p></td>
+                            <td><p><b><%= el.nickname %></b></p></td>
+                            <td><p><b><%= el.position %></b></p></td>
+                            <td><p><b><%= el.phone %></b></p></td>
+                        </tr>
+                <% }); %>
+                </tbody>
+            </table>
+            <br>
+            <h2 class="subtitle is-6">Чтобы упомянуть инструктора пишите в чат по этой форме "<@discord_id>".</h2>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer') -%>

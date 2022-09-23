@@ -1,41 +1,66 @@
 <%- include('partials/header')  -%>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-12 col-lg-10 col-xl-8 mx-auto">
-            <h2 class="h3 mb-4 page-title">Settings</h2>
-            <div class="my-4">
-                <form action="/profile/settings" method="POST">
-                    <div class="row mt-5 align-items-center">
-                        <div class="col-md-3 text-center mb-5">
-                            <div class="avatar avatar-xl">
-                                <img src="https://cdn.discordapp.com/avatars/<%= user.discordId %>/<%= user.avatar %>" alt="..." class="avatar-img rounded-circle" />
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="row align-items-center">
-                                <div class="col-md-7">
-                                    <h4 class="mb-1"><%= user.username %>#<%= user.discriminator %></h4>
-                                </div>
-                            </div>
-                                <div class="col">
-                                    <p class="text-muted">Access Level: <b><%= user.level %></b></p>
-                                    <p class="text-muted">Rank: <b><%= user.rank %></b></p>
-                                    <p class="text-muted">Nickname: <b><%= user.nickname %></b></p>
-                                </div>
-                            </div>
-                        </div>
-                    <hr class="my-4" />
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="nickname">Nickname</label>
-                            <input type="text" name="nickname" class="form-control" placeholder="Alexander Fiero" />
-                        </div>
-                    </div>
-                    <hr class="my-4" />
-                    <button type="submit" class="btn btn-primary">Save Change</button>
-                </form>
+<div class="container box p-6 has-background-light">
+    <h1 class="title has-text-centered">
+        Blaine County Sheriff's Department
+    </h1>
+    <h2 class="subtitle has-text-centered">
+        Settings
+    </h2>
+    <div>
+        <div>
+            <figure class="image is-128x128">
+                <img class="is-rounded" src="https://cdn.discordapp.com/avatars/<%= user.discordId %>/<%= user.avatar %>">
+            </figure>
+        </div>
+        <hr>
+        <div class="">
+            <div class="">
+                <div class="">
+                    <h4 class=""><%= user.username %>#<%= user.discriminator %></h4>
+                </div>
+            </div>
+            <div class="">
+                <p class="text-muted">Access Level: <b><%= user.level %></b></p>
+                <p class="text-muted">Rank: <b><%= user.rank %></b></p>
+                <p class="text-muted">Position: <b><%= user.position %></b></p>
+                <p class="text-muted">Nickname: <b><%= user.nickname %></b></p>
+                <p class="text-muted">Phone: <b><%= user.phone %></b></p>
             </div>
         </div>
     </div>
+    <hr>
+    <form action="/profile/settings" method="POST">
+        <div class="field">
+            <label class="label">Nickname</label>
+            <div class="control">
+                <input class="input" type="text"
+                       placeholder="Enter your nickname"
+                       name="nickname"
+                />
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Phone</label>
+            <div class="control">
+                <input
+                        class="input is-grouped"
+                        type="text"
+                        placeholder="Enter your phone number"
+                        name="phone"
+                />
+            </div>
+        </div>
+        <div class="field is-grouped">
+            <div class="control">
+                <button type="submit" class="button is-success">
+                    Save Change
+                </button>
+            </div>
+            <div class="control">
+                <a class="button is-link is-light" href="/profile">Cancel</a>
+            </div>
+        </div>
+    </form>
 </div>
 <%- include('partials/footer')  -%>

@@ -1,5 +1,5 @@
 const express = require('express');
-const { port } = require('./config.json');
+const { port, ip } = require('./config.json');
 const app = express();
 const session = require('express-session');
 const passport = require('passport');
@@ -8,6 +8,8 @@ const db = require('./database/database');
 const path = require('path');
 const bodyParser = require('body-parser');
 const { check, validationResult } = require('express-validator');
+const Logs = require('./models/Logs');
+const compression = require('compression')
 
 db.then(() => console.log('Connected to MongoDB')).catch(err => console.log(err));
 
@@ -15,7 +17,8 @@ db.then(() => console.log('Connected to MongoDB')).catch(err => console.log(err)
 const authRoute = require('./routes/auth');
 const profileRoute = require('./routes/profile');
 const dashboardRoute = require('./routes/dashboard');
-const divisionRoute = require('./routes/divisions');
+const instructorsRoute = require('./routes/instructors');
+const academyRoute = require('./routes/academy');
 
 app.use(session({
     secret: 'some random secret',
@@ -30,6 +33,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(compression());
 
 // Passport
 
@@ -40,7 +44,8 @@ app.use(passport.session());
 app.use('/auth', authRoute);
 app.use('/profile', profileRoute);
 app.use('/dashboard', dashboardRoute);
-app.use('/divisions', divisionRoute);
+app.use('/instructors', instructorsRoute);
+app.use('/academy', academyRoute);
 
 app.get('/', (req, res) => {
     res.render('home', {
@@ -48,4 +53,4 @@ app.get('/', (req, res) => {
     });
 });
 
-app.listen(port, () => console.log(`App listening at http://localhost:${port}`));
+app.listen(port, ip,() => console.log(`App listening at http://${ip}:${port}`));

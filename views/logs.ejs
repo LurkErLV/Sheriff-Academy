@@ -1,0 +1,10 @@
+<%- include('partials/header')  -%>
+<link rel="stylesheet" href="/stylesheets/logs.css">
+<div class="logs">
+    <ul>
+        <% logs.forEach(el => {%>
+            <li class="has-text-centered log"><span class="date"><%= new Date(Date.parse(el.createdAt)).toLocaleDateString("ru-RU", { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %></span> | <span class="userid"><%= el.userId %></span> - <%= el.action %> для <span class="userid"><%= el.targetId %></span></li>
+        <% }); %>
+    </ul>
+</div>
+<%- include('partials/footer')  -%>

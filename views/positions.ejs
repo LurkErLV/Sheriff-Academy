@@ -1,0 +1,54 @@
+<%- include('partials/header') -%>
+<div class="container box has-background-light">
+    <div class="b-table">
+        <div class="table-wrapper has-mobile-cards">
+            <table class="table is-fullwidth is-striped is-hoverable is-fullwidth">
+                <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Discord ID</th>
+                    <th>Discord</th>
+                    <th>Nickname</th>
+                    <th>Position</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <% users.forEach((el, i) => { %>
+                    <form action="/dashboard/positions" method="POST">
+                        <tr>
+                            <td data-label="Id">
+                                <%= i + 1 %>
+                            </td>
+                            <td><input class="input" type="text" name="id" readonly="readonly" value="<%= el.discordId %>"></td>
+                            <td><input class="input" type="text" readonly="readonly" value="<%= el.username %>#<%= el.discriminator %>"></td>
+                            <td><input class="input" type="text" readonly="readonly" value="<%= el.nickname %>"></td>
+                            <td>
+                                <div class="select">
+                                    <select <% if (user.discordId === el.discordId) {%> disabled <% } %> name="position">
+                                        <option selected disabled><%= el.position %></option>
+                                        <option value="1">None</option>
+                                        <option value="2">Instructor SA</option>
+                                        <option value="3">High Instructor SA</option>
+                                        <option value="4">D.Head SA</option>
+                                        <option value="5">Head SA</option>
+                                        <option value="6">Curator SA</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="is-actions-cell">
+                                <div class="buttons is-right">
+                                    <button <% if (user.discordId === el.discordId) {%> disabled <% } %> class="button is-small is-primary" type="submit">
+                                        <span class="icon"><i class="fa fa-save"></i></span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </form>
+                <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer') -%>

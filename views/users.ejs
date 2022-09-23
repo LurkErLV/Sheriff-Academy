@@ -1,95 +1,71 @@
 <%- include('partials/header') -%>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title text-uppercase mb-0">Manage Users</h5>
-                </div>
-                <div class="table-responsive">
+    <div class="container box has-background-light">
+        <div class="b-table">
+            <div class="table-wrapper has-mobile-cards">
+                <table class="table is-fullwidth is-striped is-hoverable is-fullwidth">
+                    <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Discord ID</th>
+                        <th>Discord</th>
+                        <th>Nickname</th>
+                        <th>Access Level</th>
+                        <th>Rank</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
                     <% users.forEach((el, i) => { %>
-                        <form action="/dashboard/users" method="POST">
-                            <table class="table no-wrap user-table mb-0">
-                                <thead>
-                                <tr>
-                                    <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
-                                    <th scope="col" class="border-0 text-uppercase font-medium">Discord Id</th>
-                                    <th scope="col" class="border-0 text-uppercase font-medium">Discord</th>
-                                    <th scope="col" class="border-0 text-uppercase font-medium">Nickname</th>
-                                    <th scope="col" class="border-0 text-uppercase font-medium" id="accessLevel">Access
-                                        Level
-                                    </th>
-                                    <th scope="col" class="border-0 text-uppercase font-medium" id="rank">Rank</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td class="pl-4"><%= i + 1 %></td>
-                                    <td class="font-medium mb-0">
-                                        <input class="input" type="text" name="id" readonly="readonly" value="<%= el.discordId %>">
-                                    </td>
-                                    <td>
-                                        <input class="input" type="text" readonly="readonly"
-                                               value="<%= el.username %>#<%= el.discriminator %>">
-                                    </td>
-                                    <td>
-                                        <input class="input" type="text" readonly="readonly" value="<%= el.nickname %>"><br>
-                                    </td>
-                                    <td>
-                                        <% if (user.discordId === el.discordId) { %>
-                                            <div class="select">
-                                        <select disabled name="accessLevel">
-                                            <% } else { %>
-                                                <div class="select">
-                                            <select name="accessLevel">
-                                                <% } %>
-                                                <option selected disabled><%= el.level %></option>
-                                                <option value="0">0</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                            </select>
-                                                </div>
-                                    </td>
-                                    <td>
-                                        <% if (user.discordId === el.discordId) { %>
-                                        <div class="select">
-                                        <select disabled name="rank">
-                                            <% } else { %>
-                                            <div class="select">
-                                            <select name="rank">
-                                                <% } %>
-                                                <option selected disabled><%= el.rank %></option>
-                                                <option value="1">Кадет ПА</option>
-                                                <option value="2">Офицер</option>
-                                                <option value="3">Сержант</option>
-                                                <option value="4">Лейтенант</option>
-                                                <option value="5">Капитан</option>
-                                                <option value="6">Коммандер</option>
-                                                <option value="7">Зам. Шерифа</option>
-                                            </select>
-                                            </div>
-                                    </td>
-                                    <td>
-                                        <% if (user.discordId === el.discordId) { %>
-                                            <button disabled type="submit"
-                                                    class="btn btn-outline-info btn-circle btn-md btn-circle ml-1"><i
-                                                        class="fa fa-save"></i></button>
-                                        <% } else { %>
-                                            <button type="submit"
-                                                    class="btn btn-outline-info btn-circle btn-md btn-circle ml-1"><i
-                                                        class="fa fa-save"></i></button>
-                                        <% } %>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </form>
+                    <form action="/dashboard/users" method="POST">
+                    <tr>
+                        <td data-label="Id">
+                            <%= i + 1 %>
+                        </td>
+                        <td><input class="input" type="text" name="id" readonly="readonly" value="<%= el.discordId %>"></td>
+                        <td><input class="input" type="text" readonly="readonly" value="<%= el.username %>#<%= el.discriminator %>"></td>
+                        <td><input class="input" type="text" readonly="readonly" value="<%= el.nickname %>"></td>
+                        <td>
+                                    <div class="select">
+                                        <select <% if (user.discordId === el.discordId) {%> disabled <% } %> name="accessLevel">
+                                            <option selected disabled><%= el.level %></option>
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                        </select>
+                                    </div>
+                        </td>
+                        <td>
+                                    <div class="select">
+                                        <select <% if (user.discordId === el.discordId) {%> disabled <% } %> name="rank">
+                                            <option selected disabled><%= el.rank %></option>
+                                            <option value="1">Гость</option>
+                                            <option value="2">Кадет ПА</option>
+                                            <option value="3">Офицер</option>
+                                            <option value="4">Сержант</option>
+                                            <option value="5">Лейтенант</option>
+                                            <option value="6">Капитан</option>
+                                            <option value="7">Коммандер</option>
+                                            <option value="8">Зам. Шерифа</option>
+                                        </select>
+                                    </div>
+                        </td>
+                        <td class="is-actions-cell">
+                            <div class="buttons is-right">
+                                <button <% if (user.discordId === el.discordId) {%> disabled <% } %> class="button is-small is-primary" type="submit">
+                                    <span class="icon"><i class="fa fa-save"></i></span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    </form>
                     <% }); %>
-                </div>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-</div>
+<style>
+</style>
 <%- include('partials/footer') -%>

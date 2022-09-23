@@ -25,11 +25,21 @@ router.get('/settings', isAuthorized, (req, res) => {
 router.post('/settings', bodyParser.urlencoded({ extended: true }), isAuthorized, async (req, res) => {
     const user = await DiscordUser.findOne({ discordId: req.user.discordId });
     if (user) {
-        user.updateOne({ nickname: req.body.nickname }, (err) => {
-            if (err) {
-                console.log(err);
-            }
-        });
+        if (req.body.nickname) {
+            user.updateOne({nickname: req.body.nickname}, (err) => {
+                if (err) {
+                    console.log(err);
+                }
+            });
+        }
+
+        if (req.body.phone) {
+            user.updateOne({ phone: req.body.phone }, (err) => {
+                if (err) {
+                    console.log(err);
+                }
+            });
+        }
     }
     res.redirect(req.get('referer'));
 });
